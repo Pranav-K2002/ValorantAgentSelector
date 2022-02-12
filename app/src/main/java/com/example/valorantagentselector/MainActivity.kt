@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val recyclerView = findViewById<RecyclerView>(R.id.unlockedAgentsRecyclerView)
-        val columns = 5
+        val columns = 4
         recyclerView.layoutManager = GridLayoutManager(applicationContext, columns)
         photoAdapter = PhotoAdapter(applicationContext)
         recyclerView.adapter = photoAdapter
