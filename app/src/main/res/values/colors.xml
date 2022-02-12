@@ -6,6 +6,7 @@
 
 
     <color name="black">#FF000000</color>
+    <color name="val_black">#FF111111</color>
     <color name="val_white">#FFFBF5</color>
     <color name="trans_black">#80000000</color>
 
