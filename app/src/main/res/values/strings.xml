@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ValorantAgentSelector</string>
+    <string name="selected_agents">Selected Agents:</string>
+    <string name="agent_1">Agent 1</string>
+    <string name="title">Title</string>
+    <string name="desc">Desc</string>
+    <string name="select_unlocked_agents">Select Unlocked Agents: </string>
+</resources>

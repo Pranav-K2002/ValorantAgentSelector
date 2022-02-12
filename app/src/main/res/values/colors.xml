@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="val_red">#FD4556</color>
+    <color name="val_red_dark">#BD3944</color>
+    <color name="val_red_darkest">#53212B</color>
+
+
+    <color name="black">#FF000000</color>
+    <color name="val_white">#FFFBF5</color>
+    <color name="trans_black">#80000000</color>
+
+    <color name="selected_green">#6650C878</color>
+</resources>
