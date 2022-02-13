@@ -12,6 +12,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var photoAdapter: PhotoAdapter
+    private lateinit var photoAdapter2: PhotoAdapter
     private var dataList = mutableListOf<DataModel>()
 
     private val randAgent: RandomiseAgentClass = RandomiseAgentClass()
@@ -20,12 +21,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val randomiseButton: Button = findViewById(R.id.randomiseButton)
-        val recyclerView = findViewById<RecyclerView>(R.id.unlockedAgentsRecyclerView)
         val columns = 4
-        recyclerView.layoutManager = GridLayoutManager(applicationContext, columns)
+
+        val randomiseButton: Button = findViewById(R.id.randomiseButton)
+
+        val unlockedAgentsRecyclerView = findViewById<RecyclerView>(R.id.unlockedAgentsRecyclerView)
+        unlockedAgentsRecyclerView.layoutManager = GridLayoutManager(applicationContext, columns)
         photoAdapter = PhotoAdapter(applicationContext)
-        recyclerView.adapter = photoAdapter
+        unlockedAgentsRecyclerView.adapter = photoAdapter
+
+        val unpreferredAgentsRecyclerView = findViewById<RecyclerView>(R.id.unPreferredAgentsRecyclerView)
+        unpreferredAgentsRecyclerView.layoutManager = GridLayoutManager(applicationContext, columns)
+        photoAdapter2 = PhotoAdapter(applicationContext)
+        unpreferredAgentsRecyclerView.adapter = photoAdapter2
 
         val agentsList = mutableListOf<String>(
             "astra",
@@ -60,9 +68,23 @@ class MainActivity : AppCompatActivity() {
 
         photoAdapter.setDataList(dataList)
 
-        val notPreferredAgent = mutableListOf<String>()
 
-        agentsList.removeAll(notPreferredAgent)
+        val notPreferredAgent = mutableListOf<String>("astra")
+
+        val unlockedAgents= agentsList
+
+        unlockedAgents.removeAll(notPreferredAgent)
+
+        for (agent in notPreferredAgent) {
+
+            val context = applicationContext
+            val resources: Resources = context.resources
+            val resourceId: Int = resources.getIdentifier(agent, "drawable", context.packageName)
+
+            dataList.add(DataModel(agent.capitalize(Locale.ROOT), resourceId))
+        }
+
+        photoAdapter2.setDataList(dataList)
 
         randomiseButton.setOnClickListener {
             val agent = randAgent.randomiseAgent(agentsList)

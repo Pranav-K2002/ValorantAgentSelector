@@ -5,4 +5,6 @@
     <string name="title">Title</string>
     <string name="desc">Desc</string>
     <string name="select_unlocked_agents">Select Unlocked Agents: </string>
+    <string name="randomize">Randomize!</string>
+    <string name="select_un_preferred_agents">Select Un-Preferred Agents:</string>
 </resources>
