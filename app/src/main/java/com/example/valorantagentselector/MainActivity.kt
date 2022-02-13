@@ -1,4 +1,4 @@
-        package com.example.valorantagentselector
+package com.example.valorantagentselector
 
 import android.content.res.Resources
 import android.os.Bundle
@@ -13,21 +13,21 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var photoAdapter: PhotoAdapter
     private var dataList = mutableListOf<DataModel>()
-    //private val randomiseButton: Button = findViewById(R.id.randomiseButton)
-    //private val randAgent: RandomiseAgentClass = RandomiseAgentClass()
+
+    private val randAgent: RandomiseAgentClass = RandomiseAgentClass()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        val randomiseButton: Button = findViewById(R.id.randomiseButton)
         val recyclerView = findViewById<RecyclerView>(R.id.unlockedAgentsRecyclerView)
         val columns = 4
         recyclerView.layoutManager = GridLayoutManager(applicationContext, columns)
         photoAdapter = PhotoAdapter(applicationContext)
         recyclerView.adapter = photoAdapter
 
-        val agentsList = listOf(
+        val agentsList = mutableListOf<String>(
             "astra",
             "breach",
             "brimstone",
@@ -60,12 +60,14 @@ class MainActivity : AppCompatActivity() {
 
         photoAdapter.setDataList(dataList)
 
-        val unlockedAgentsList = agentsList
-        val notPreferredAgent = mutableListOf<String>("Astra")
-//        randomiseButton.setOnClickListener {
-//            //val agent = randAgent.randomiseAgent(unlockedAgentsList)
-//            //Toast.makeText(getApplicationContext(),"Hello Javatpoint",Toast.LENGTH_SHORT).show();
-//        }
+        val notPreferredAgent = mutableListOf<String>()
+
+        agentsList.removeAll(notPreferredAgent)
+
+        randomiseButton.setOnClickListener {
+            val agent = randAgent.randomiseAgent(agentsList)
+            Toast.makeText(applicationContext, agent, Toast.LENGTH_SHORT).show()
+        }
 
     }
 
