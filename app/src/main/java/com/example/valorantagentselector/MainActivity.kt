@@ -1,7 +1,9 @@
-package com.example.valorantagentselector
+        package com.example.valorantagentselector
 
 import android.content.res.Resources
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +13,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var photoAdapter: PhotoAdapter
     private var dataList = mutableListOf<DataModel>()
+    //private val randomiseButton: Button = findViewById(R.id.randomiseButton)
+    //private val randAgent: RandomiseAgentClass = RandomiseAgentClass()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +61,13 @@ class MainActivity : AppCompatActivity() {
         photoAdapter.setDataList(dataList)
 
         val unlockedAgentsList = agentsList
+        val notPreferredAgent = mutableListOf<String>("Astra")
+//        randomiseButton.setOnClickListener {
+//            //val agent = randAgent.randomiseAgent(unlockedAgentsList)
+//            //Toast.makeText(getApplicationContext(),"Hello Javatpoint",Toast.LENGTH_SHORT).show();
+//        }
 
     }
+
+
 }
